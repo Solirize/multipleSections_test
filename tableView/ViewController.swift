@@ -8,68 +8,21 @@
 
 import UIKit
 
-//class ViewController: UITableViewController {
-//
-//    let cellId = "CellID"
-//
-//    let names = [
-//        ["John", "Steve", "Peter"],
-//        ["Karl", "Pipito", "Degustator"],
-//        ["Freddy", "Alex", "Julia", "Megan"],
-//        ["Pepegan!"]
-//    ]
-//
-//    override func viewDidLoad() {
-//        super.viewDidLoad()
-//
-//        navigationItem.title = "Contacts"
-//        navigationController?.navigationBar.prefersLargeTitles = true
-//
-//        tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellId)
-//    }
-//
-//    override func numberOfSections(in tableView: UITableView) -> Int {
-//        return names.count
-//    }
-//
-//    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-//        let label = UILabel()
-//        label.text = String(section)
-//        label.backgroundColor = .red
-//        return label
-//    }
-//
-//    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return names[section].count
-//    }
-//
-//    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath)
-//
-//
-//        cell.textLabel?.text = self.names[indexPath.section][indexPath.row]
-//        cell.backgroundColor = .orange
-//        return cell
-//    }
-//}
-
 class SecondViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     let cellId = "CellID"
     let supViewId = "SupId"
     
     let names = [
         ["plane_forest", "Steve", "John"],
-        ["Karl", "Pepegan"],
-        ["Freddy", "Alex", "plane_forest", "Megan", "Steve", "Megan", "plane_forest", "Steve"],
+        ["Karl", "Pepegan!"],
+        ["Pepegan!", "Alex", "plane_forest", "Megan", "Steve", "Megan", "plane_forest", "Steve"],
         ["Pepegan!"],
         ["Steve", "Steve", "Steve", "Steve", "Steve", "Steve", "Steve", "Steve", "Steve", "Steve", "Steve", "Steve", "Steve", "Steve", "Steve", "Steve", "Steve", "Steve", "Steve", "Steve", "Steve", "Steve", "Steve", "Steve", "Steve", "Steve", "Steve", "Steve", "Steve", "Steve", "Steve", "Steve", "Steve", "Steve", "Steve", "Steve", "Steve", "Steve", "Steve"]
     ]
     
     override func loadView() {
         super.loadView()
-        
-//        navigationItem.title = "Contact!"
-//        navigationController?.navigationBar.prefersLargeTitles = true
+
         
         collectionView?.register(MyCell.self, forCellWithReuseIdentifier: cellId)
         collectionView?.register(SupCell.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: supViewId)
@@ -107,6 +60,10 @@ class SecondViewController: UICollectionViewController, UICollectionViewDelegate
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 0
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print(names[indexPath.section][indexPath.row])
     }
     
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
@@ -159,7 +116,6 @@ class MyCell: UICollectionViewCell {
     let imageView: UIImageView = {
         let iV = UIImageView()
         iV.backgroundColor = .blue
-        //        imageView.image = UIImage(named: "someName")
         return iV
     }()
     
